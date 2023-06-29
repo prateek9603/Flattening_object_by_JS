@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flattening_Object</title>
+</head>
+<body>
+    
+
+
+
+
+
+
+    <script>
+
+let user = {"name":"Karan",
+            "address":{
+                "personal":"Delhi",
+                "area":"CivilLines"
+            },
+            "office":{
+                "state":"Mumbai",
+                "area":{
+                "landmark":"Bandra"}
+        }
+}
+let parent = "user";
+
+let resultObj = {};
+
+function flatTheObj(obj, parent) {
+  for (let key in obj) {
+    if (typeof obj[key] === "object") {
+      flatTheObj(obj[key], parent + "_" + key);
+    } else {
+      resultObj[ parent + "_" + key] = obj[key];
+    }
+  }
+
+  return resultObj;
+}
+
+console.log(flatTheObj(user, parent));
+
+    </script>
+</body>
+</html>
